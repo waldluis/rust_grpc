@@ -1,0 +1,8 @@
+# rust
+backend/target
+backend/Cargo.lock
+**/*.rs.bk
+
+# python
+.venv
+__pycache__/

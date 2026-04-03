@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package backend;
+
+
+message SetupRequest {
+    string procedure = 1;
+}
+
+message SetupResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message ExecuteRequest {}
+
+message ExecuteResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message TerminateRequest {}
+
+message TerminateResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+service Backend {
+    rpc Setup (SetupRequest) returns (SetupResponse);
+    rpc Execute (ExecuteRequest) returns (ExecuteResponse);
+    rpc Terminate (TerminateRequest) returns (TerminateResponse);
+}
