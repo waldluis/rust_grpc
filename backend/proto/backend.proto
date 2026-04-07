@@ -26,9 +26,23 @@ message TerminateResponse {
     string message = 2;
 }
 
+message ExecuteStreamRequest {}
+
+message ExecuteStreamResponse {
+    oneof payload {
+        string chunk = 1;
+        string error = 2;
+        bool done = 3;
+    }
+    int64 sequence = 4;
+}
+
 
 service Backend {
     rpc Setup (SetupRequest) returns (SetupResponse);
     rpc Execute (ExecuteRequest) returns (ExecuteResponse);
     rpc Terminate (TerminateRequest) returns (TerminateResponse);
+
+    rpc SetupStream (SetupRequest) returns (SetupResponse);
+    rpc ExecuteStream (ExecuteStreamRequest) returns (stream ExecuteStreamResponse);
 }
